@@ -31,14 +31,20 @@ class BaseResponse(object):
         
         return HttpResponse(template.render(context))
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 class IPResponse(BaseResponse):
     def __init__(self, req):
         BaseResponse.__init__(self, req)
     
     def get_content(self):
-        request = self.request
-        ip_addr = request.META['HTTP_X_FORWARDED_FOR'] if 'HTTP_X_FORWARDED_FOR' \
-                in request.META else request.META['REMOTE_ADDR']
+        ip_addr = get_client_ip(self.request)
         template = loader.get_template('ip.html')
         context = Context({
             'my_ipaddress': ip_addr,
