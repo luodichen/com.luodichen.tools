@@ -1,5 +1,6 @@
-from django.template import Context, loader
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponseRedirect
+
+import response
 
 # Create your views here.
 
@@ -7,8 +8,7 @@ def redirect_index(request):
     return HttpResponseRedirect('/page/')
 
 def index(request):
-    template = loader.get_template('mainframe.html')
-    context = Context({
-    })
-    
-    return HttpResponse(template.render(context))
+    return ip(request)
+
+def ip(request):
+    return response.IPResponse(request).get_response()
