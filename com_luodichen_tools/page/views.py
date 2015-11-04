@@ -7,7 +7,7 @@ def redirect_index(request):
     return HttpResponseRedirect('/page/')
 
 def index(request):
-    template = loader.get_template('index.html')
+    template = loader.get_template('mainframe.html')
     context = Context({
     })
     
