@@ -46,7 +46,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container" id="tab-page">
     {{ tab_content }}
       <!--
       <div class="starter-template">
@@ -64,5 +64,8 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+    {% for js_file in js_files %}
+    <script src="{% static js_file %}"></script>
+    {% endfor %}
   </body>
 </html>

@@ -26,6 +26,7 @@ class BaseResponse(object):
         context = Context({
             'tab_list': tab_list,
             'tab_content': content,
+            'js_files': tab_list[self.get_active_index()].js_files
         })
         
         return HttpResponse(template.render(context))
