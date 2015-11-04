@@ -36,8 +36,12 @@ class IPResponse(BaseResponse):
         BaseResponse.__init__(self, req)
     
     def get_content(self):
+        request = self.request
+        ip_addr = request.META['HTTP_X_FORWARDED_FOR'] if 'HTTP_X_FORWARDED_FOR' \
+                in request.META else request.META['REMOTE_ADDR']
         template = loader.get_template('ip.html')
         context = Context({
+            'my_ipaddress': ip_addr,
         })
         
         return template.render(context)
