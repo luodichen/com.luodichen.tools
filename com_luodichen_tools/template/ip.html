@@ -1,0 +1,16 @@
+<div class="row">
+  <p class="text-center">当前 IP 地址: {{ my_ipaddress }}, 地理区域: <span id="my-location" class="label label-default">查询中...</span></p>
+</div>
+<div class="row">
+  <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="输入 IP 地址或域名">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">查询</button>
+      </span>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+var my_ipaddress = '{{ my_ipaddress }}';
+</script>

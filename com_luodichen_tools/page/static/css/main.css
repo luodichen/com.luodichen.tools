@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+body {
+  padding-top: 50px;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+#tab-page {
+	padding-top: 32px;
+}

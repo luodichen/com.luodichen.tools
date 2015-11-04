@@ -18,4 +18,5 @@ from django.conf.urls import include, url
 urlpatterns = [
     url(r'^$', 'page.views.redirect_index'),
     url(r'^page/', include('page.urls')),
+    url(r'^api/', include('api.urls')),
 ]
