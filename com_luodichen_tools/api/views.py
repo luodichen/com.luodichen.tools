@@ -20,3 +20,21 @@ def ip(request):
         ret['msg'] = str(e)
     
     return httpresponse.JsonResponse(ret)
+
+def ip_api(request):
+    ret = {'err': 0, 'msg': ''}
+    try:
+        address = request.REQUEST.get('address')
+        url = 'http://ip-api.com/json/' + address
+        req = urllib2.Request(url)
+        response = json.loads(urllib2.urlopen(req).read())
+        
+        if response['status'] != 'success':
+            ret['err'] = 1
+        
+        ret['msg'] = response['status']
+    except Exception, e:
+        ret['err'] = -1
+        ret['msg'] = str(e)
+    
+    return httpresponse.JsonResponse(dict(ret.items() + response.items()))
