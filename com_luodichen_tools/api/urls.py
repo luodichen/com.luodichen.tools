@@ -8,4 +8,5 @@ from django.conf.urls import url
 
 urlpatterns = [
     url(r'^ip/$', 'api.views.ip'),
+    url(r'^ip-api/$', 'api.views.ip_api'), 
 ]

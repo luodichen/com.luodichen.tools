@@ -12,3 +12,15 @@ body {
 #tab-page {
 	padding-top: 32px;
 }
+
+.panel-padding {
+	padding-top:16px;
+}
+
+.ipinfo-table {
+	width:100%;
+}
+
+.ipinfo-header {
+	width:25%;
+}
