@@ -1,5 +1,6 @@
 import urllib2
 import json
+import socket
 import httpresponse
 
 def ip(request):
@@ -7,6 +8,7 @@ def ip(request):
     apikey = 'ef804e1460acfabfd8b721c83e679f4b'
     try:
         address = request.REQUEST.get('address')
+        address = socket.gethostbyname(address)
         url = 'http://apis.baidu.com/apistore/iplookupservice/iplookup?ip=' + address
         req = urllib2.Request(url)
         req.add_header('apikey', apikey)
