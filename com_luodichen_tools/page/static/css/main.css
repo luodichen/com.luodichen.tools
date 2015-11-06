@@ -24,3 +24,8 @@ body {
 .ipinfo-header {
 	width:25%;
 }
+
+.input-group-padding {
+	padding-left: 10px;
+	padding-right: 10px;
+}

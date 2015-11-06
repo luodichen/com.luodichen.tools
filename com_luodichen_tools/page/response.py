@@ -19,7 +19,10 @@ class BaseResponse(object):
     
     def get_response(self):
         tab_list = tabpage.tablist
-        tab_list[self.get_active_index()].active = True
+        
+        for i in xrange(len(tab_list)):
+            tab_list[i].active = (self.get_active_index() == i)
+
         content = self.get_content()
         
         template = loader.get_template('mainframe.html')
@@ -54,3 +57,18 @@ class IPResponse(BaseResponse):
     
     def get_active_index(self):
         return 0
+
+class WhoisResponse(BaseResponse):
+    def __init__(self, req):
+        BaseResponse.__init__(self, req)
+    
+    def get_content(self):
+        template = loader.get_template('whois.html')
+        context = Context({
+        })
+        
+        return template.render(context)
+    
+    def get_active_index(self):
+        return 1
+    

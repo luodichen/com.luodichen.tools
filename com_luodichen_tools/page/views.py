@@ -12,3 +12,7 @@ def index(request):
 
 def ip(request):
     return response.IPResponse(request).get_response()
+
+def whois(request):
+    return response.WhoisResponse(request).get_response()
+
