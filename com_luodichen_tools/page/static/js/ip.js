@@ -68,7 +68,8 @@ function set_ipapi_result(success, data) {
 	if (success) {
 		set_label('ipapi-label', LABEL_SUCCEED);
 		$("#ipapi-address").html(data.query);
-		$("#ipapi-country").html(data.country);
+		$("#ipapi-country").html(data.country + '&nbsp;&nbsp;<img src="/static/img/flags/' 
+		        + data.countryCode.toLowerCase() + '.png" width="32px"/>');
 		$("#ipapi-region").html(data.regionName);
 		$("#ipapi-city").html(data.city);
 		$("#ipapi-isp").html(data.isp);
