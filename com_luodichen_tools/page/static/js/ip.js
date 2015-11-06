@@ -152,3 +152,9 @@ function on_query_button_clicked() {
         }
     );
 }
+
+$("#ip-field").keydown(function(event) {
+    if (event.keyCode == 13) {
+        on_query_button_clicked();
+    }
+});

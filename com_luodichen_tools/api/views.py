@@ -38,6 +38,8 @@ def ip_api(request):
     ret = {'err': 0, 'msg': ''}
     try:
         address = request.REQUEST.get('address')
+        if address == '':
+            address = get_client_ip(request)
         url = 'http://ip-api.com/json/' + address
         req = urllib2.Request(url)
         response = json.loads(urllib2.urlopen(req).read())
