@@ -27,13 +27,15 @@ function query_whois(domain, success, error) {
 }
 
 function on_query_button_clicked() {
+    domain = $("#domain-field").val();
+    if (domain == '') {
+        $("#domain-alert").removeClass("hidden");
+        return;
+    }
+    
     $("#result-panel").removeClass('hidden');
     $("#whois-result").html('');
     set_label('result-label', LABEL_QUERING);
-    
-    domain = $("#domain-field").val();
-    if (domain == '')
-        return;
     
     query_whois(domain,
         function(data) {
@@ -54,6 +56,10 @@ function on_query_button_clicked() {
 $("#domain-field").keydown(function(event) {
     if (event.keyCode == 13) {
         on_query_button_clicked();
+    }
+    
+    if ($("#domain-alert").attr('class').indexOf('hidden') < 0) {
+        $("#domain-alert").addClass('hidden');
     }
 });
 
