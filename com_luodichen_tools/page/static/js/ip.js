@@ -3,15 +3,15 @@ var LABEL_SUCCEED = 1;
 var LABEL_FAILED = 2;
 
 var label_style = [
-	{cls: 'label label-default text-right', text: '查询中'},
-	{cls: 'label label-primary text-right', text: '查询成功'},
-	{cls: 'label label-danger text-right', text: '查询失败'}
+    {cls: 'label label-default text-right', text: '查询中'},
+    {cls: 'label label-primary text-right', text: '查询成功'},
+    {cls: 'label label-danger text-right', text: '查询失败'}
 ];
 
 function set_label(label, style) {
-	t = $("#" + label);
-	t.attr('class', label_style[style].cls);
-	t.html(label_style[style].text);
+    t = $("#" + label);
+    t.attr('class', label_style[style].cls);
+    t.html(label_style[style].text);
 }
 
 function query_ip(address, success, error) {
@@ -54,36 +54,36 @@ function set_my_location(success, msg, loc) {
 }
 
 function set_bd_result(success, msg, loc, isp, ip) {
-	if (success && !(loc == null || loc == '')) {
-		set_label('bd-label', LABEL_SUCCEED);
-		$("#bd-adress").html(ip);
-		$("#bd-location").html(loc);
-		$("#bd-isp").html(isp);
-	} else {
-		set_label('bd-label', LABEL_FAILED);
-	}
+    if (success && !(loc == null || loc == '')) {
+        set_label('bd-label', LABEL_SUCCEED);
+        $("#bd-adress").html(ip);
+        $("#bd-location").html(loc);
+        $("#bd-isp").html(isp);
+    } else {
+        set_label('bd-label', LABEL_FAILED);
+    }
 }
 
 function set_ipapi_result(success, data) {
-	if (success) {
-		set_label('ipapi-label', LABEL_SUCCEED);
-		$("#ipapi-address").html(data.query);
-		$("#ipapi-country").html(data.country + '&nbsp;&nbsp;<img src="http://7xo3rs.com1.z0.glb.clouddn.com/flag/' 
-		        + data.countryCode.toLowerCase() + '.png" width="32px"/>');
-		$("#ipapi-region").html(data.regionName);
-		$("#ipapi-city").html(data.city);
-		$("#ipapi-isp").html(data.isp);
-		$("#ipapi-as").html(data.as);
-		$("#ipapi-org").html(data.org);
-		$("#ipapi-lon").html(data.lon);
-		$("#ipapi-lat").html(data.lat);
-	} else {
-		set_label('ipapi-label', LABEL_FAILED);
-	}
+    if (success) {
+        set_label('ipapi-label', LABEL_SUCCEED);
+        $("#ipapi-address").html(data.query);
+        $("#ipapi-country").html(data.country + '&nbsp;&nbsp;<img src="http://7xo3rs.com1.z0.glb.clouddn.com/flag/' 
+                + data.countryCode.toLowerCase() + '.png" width="32px"/>');
+        $("#ipapi-region").html(data.regionName);
+        $("#ipapi-city").html(data.city);
+        $("#ipapi-isp").html(data.isp);
+        $("#ipapi-as").html(data.as);
+        $("#ipapi-org").html(data.org);
+        $("#ipapi-lon").html(data.lon);
+        $("#ipapi-lat").html(data.lat);
+    } else {
+        set_label('ipapi-label', LABEL_FAILED);
+    }
 }
 
 function format_bd_location(response) {
-	loc = '';
+    loc = '';
     if (response.country != null && response.country != 'None')
         loc += response.country;
     if (response.province != null && response.province != 'None')
@@ -129,7 +129,7 @@ function on_query_button_clicked() {
     $(".ipapi-field").html('');
     set_label('bd-label', LABEL_QUERING);
     set_label('ipapi-label', LABEL_QUERING);
-    $("#ip-field").val('');
+    //$("#ip-field").val('');
     
     query_ip(address, 
         function(data) {
@@ -157,5 +157,20 @@ function on_query_button_clicked() {
 $("#ip-field").keydown(function(event) {
     if (event.keyCode == 13) {
         on_query_button_clicked();
+    }
+});
+
+var ip_field_onfocus = false;
+$("#ip-field").focus(function() {
+    ip_field_onfocus = true;
+    $(this).select();
+});
+
+$("#ip-field").mouseup(function() {
+    if (ip_field_onfocus) {
+        ip_field_onfocus = false;
+        return false;
+    } else {
+        return true;
     }
 });
