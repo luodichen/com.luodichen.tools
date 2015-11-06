@@ -2,6 +2,7 @@ import urllib2
 import json
 import socket
 import httpresponse
+from pywhois.pywhois import PyWhois
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -53,3 +54,15 @@ def ip_api(request):
         ret['msg'] = str(e)
     
     return httpresponse.JsonResponse(dict(ret.items() + response.items()))
+
+def whois(request):
+    ret = {'err': 0, 'msg': '', 'data': None}
+    try:
+        domain = request.REQUEST.get('domain')
+        ret['data'] = PyWhois().getwhois(domain)
+        
+    except Exception, e:
+        ret['err'] = -1
+        ret['msg'] = str(e)
+
+    return httpresponse.JsonResponse(ret)
