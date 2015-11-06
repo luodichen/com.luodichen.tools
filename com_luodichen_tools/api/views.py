@@ -3,12 +3,23 @@ import json
 import socket
 import httpresponse
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 def ip(request):
     ret = {'err': 0, 'msg': '', 'data': None}
     apikey = 'ef804e1460acfabfd8b721c83e679f4b'
     try:
         address = request.REQUEST.get('address')
-        address = socket.gethostbyname(address)
+        if address == '':
+            address = get_client_ip(request)
+        else:
+            address = socket.gethostbyname(address)
         url = 'http://apis.baidu.com/apistore/iplookupservice/iplookup?ip=' + address
         req = urllib2.Request(url)
         req.add_header('apikey', apikey)

@@ -2,11 +2,11 @@ var LABEL_QUERING = 0;
 var LABEL_SUCCEED = 1;
 var LABEL_FAILED = 2;
 
-var label_style = {
-	LABEL_QUERING: {cls: 'label label-default text-right', text: '查询中'},
-	LABEL_SUCCEED: {cls: 'label label-primary text-right', text: '查询成功'},
-	LABEL_FAILED: {cls: 'label label-danger text-right', text: '查询失败'}
-};
+var label_style = [
+	{cls: 'label label-default text-right', text: '查询中'},
+	{cls: 'label label-primary text-right', text: '查询成功'},
+	{cls: 'label label-danger text-right', text: '查询失败'}
+];
 
 function set_label(label, style) {
 	t = $("#" + label);
@@ -17,6 +17,18 @@ function set_label(label, style) {
 function query_ip(address, success, error) {
     $.ajax({
         url: '/api/ip/',
+        data: 'address=' + address,
+        type: 'get',
+        cache: false,
+        dataType: 'json',
+        success: success,
+        error: error
+    });
+}
+
+function query_ipapi(address, success, error) {
+    $.ajax({
+        url: '/api/ip-api/',
         data: 'address=' + address,
         type: 'get',
         cache: false,
@@ -88,6 +100,7 @@ $(document).ready(function() {
         function(data) {
             if (data.err != 0) {
                 set_my_location(false, data.msg, null);
+                set_bd_result(false, null, null, null, null);
             } else {
                 loc = format_bd_location(data.data);
                 set_my_location(true, data.msg, loc);
@@ -96,6 +109,46 @@ $(document).ready(function() {
         }, 
         function() {
             set_my_location(false, '网络错误', null);
+            set_bd_result(false, null, null, null, null);
+        }
+    );
+    query_ipapi(my_ipaddress,
+        function(data) {
+            set_ipapi_result(data.err == 0, data);
+        },
+        function() {
+            set_ipapi_result(false, null);
         }
     );
 });
+
+function on_query_button_clicked() {
+    address = $("#ip-field").val();
+    $(".bd-field").html('');
+    $(".ipapi-field").html('');
+    set_label('bd-label', LABEL_QUERING);
+    set_label('ipapi-label', LABEL_QUERING);
+    $("#ip-field").val('');
+    
+    query_ip(address, 
+        function(data) {
+            if (data.err == 0) {
+                loc = format_bd_location(data.data);
+                set_bd_result(true, data.msg, loc, data.data.carrier, data.data.ip);
+            } else {
+                set_bd_result(false, null, null, null, null);
+            }
+        },
+        function() {
+            set_bd_result(false, null, null, null, null);
+        }
+    );
+    query_ipapi(address, 
+        function(data) {
+            set_ipapi_result(data.err == 0, data);
+        },
+        function() {
+            set_ipapi_result(false, null);
+        }
+    );
+}
