@@ -9,4 +9,5 @@ from django.conf.urls import url
 urlpatterns = [
     url(r'^$', 'page.views.index'),
     url(r'^ip/$', 'page.views.ip'),
+    url(r'^whois/$', 'page.views.whois'),
 ]
