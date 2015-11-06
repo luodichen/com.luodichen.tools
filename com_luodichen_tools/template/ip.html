@@ -4,9 +4,9 @@
 <div class="row">
   <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="输入 IP 地址或域名">
+      <input id="ip-field" type="text" class="form-control" placeholder="输入 IP 地址或域名">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">查询</button>
+        <button class="btn btn-default" type="button" onclick="on_query_button_clicked()">查询</button>
       </span>
     </div>
   </div>
@@ -15,13 +15,38 @@
 <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 panel-padding">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">国内数据</h3>
+      <h3 class="panel-title"><span class="col-md-10 col-sm-10">国内数据</span>
+        <span class="label label-default text-right" id="bd-label">查询中</span></h3>
     </div>
     <div class="panel-body">
       <table class="table table-bordered ipinfo-table">
         <tbody>
-          <tr><th class="ipinfo-header">地区</th><td>中国广东省珠海市香洲区</td></tr>
-          <tr><th>运营商</th><td>电信</td></tr>
+          <tr><th class="ipinfo-header">IP 地址</th><td id="bd-adress" class="bd-field"></td></tr>
+          <tr><th>地区</th><td id="bd-location" class="bd-field"></td></tr>
+          <tr><th>运营商</th><td id="bd-isp" class="bd-field"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 panel-padding">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span class="col-md-10 col-sm-10"><a href="http://ip-api.com/" target="_blank">IP-API.com</a> 数据</span>
+        <span class="label label-default text-right" id="ipapi-label">查询中</span></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered ipinfo-table">
+        <tbody>
+          <tr><th class="ipinfo-header">IP 地址</th><td id="ipapi-address" class="ipapi-field"></td></tr>
+          <tr><th class="ipinfo-header">国家</th><td id="ipapi-country" class="ipapi-field"></td></tr>
+          <tr><th>州/省/地区</th><td id="ipapi-region" class="ipapi-field"></td></tr>
+          <tr><th>市</th><td id="ipapi-city" class="ipapi-field"></td></tr>
+          <tr><th>运营商</th><td id="ipapi-isp" class="ipapi-field"></td></tr>
+          <tr><th>AS</th><td id="ipapi-as" class="ipapi-field"></td></tr>
+          <tr><th>组织机构</th><td id="ipapi-org" class="ipapi-field"></td></tr>
+          <tr><th>经度</th><td id="ipapi-lon" class="ipapi-field"></td></tr>
+          <tr><th>纬度</th><td id="ipapi-lat" class="ipapi-field"></td></tr>
         </tbody>
       </table>
     </div>
