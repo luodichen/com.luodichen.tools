@@ -15,4 +15,5 @@ class TabPage(object):
 tablist = [
     TabPage(False, '/page/ip/', u'IP 地址', ['js/ip.js', ]),
     TabPage(False, '/page/whois/', 'Whois', ['js/whois.js', ]),
+    TabPage(False, '/page/md5/', 'md5',['js/md5.min.js','js/md5.js',])
 ]

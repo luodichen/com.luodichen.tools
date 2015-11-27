@@ -1,4 +1,5 @@
 from django.http.response import HttpResponseRedirect
+#from django.http.response import HttpResponse
 
 import response
 
@@ -15,4 +16,8 @@ def ip(request):
 
 def whois(request):
     return response.WhoisResponse(request).get_response()
+
+def md5(request):
+    #return HttpResponse('hello world')
+    return response.MD5(request).get_response()
 
