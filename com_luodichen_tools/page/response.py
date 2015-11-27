@@ -72,3 +72,17 @@ class WhoisResponse(BaseResponse):
     def get_active_index(self):
         return 1
     
+class MD5(BaseResponse):
+    def __init__(self, req):
+        BaseResponse.__init__(self, req)
+    
+    def get_content(self):
+        template = loader.get_template('md5.html')
+        context = Context({
+        })
+        
+        return template.render(context)
+    
+    def get_active_index(self):
+        return 2
+    
