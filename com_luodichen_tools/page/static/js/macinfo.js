@@ -34,6 +34,7 @@ function on_query_button_clicked() {
 		success: function(data) {
 			if (data.err == 0) {
 				set_label('query-label', LABEL_SUCCEED);
+				$("#mac-address").html(data.data.mac_address);
 				$("#mac-registry").html(data.data.registry);
 				$("#mac-assignment").html(data.data.assignment);
 				$("#mac-organization").html(data.data.organization_name);

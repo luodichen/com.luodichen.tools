@@ -79,6 +79,7 @@ def query_macinfo(request):
             ret['msg'] = 'mac address not found'
         else:
             ret['data'] = {
+                'mac_address': macaddr,
                 'registry': mac_info[1],
                 'assignment': mac_info[2],
                 'organization_name': mac_info[3],
