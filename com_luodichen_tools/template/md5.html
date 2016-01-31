@@ -1,0 +1,25 @@
+<div id="domain-alert" class="alert alert-danger col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 hidden">
+  <strong>请输入想要加密的字符串</strong>
+</div>
+<div class="row">
+  <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+    <div class="input-group input-group-padding">
+      <input id="string-field" type="text" class="form-control" placeholder="输入想要加密的字符串">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="on_query_button_clicked()">md5加密</button>
+      </span>
+    </div>
+  </div>
+</div>
+<div id="result-panel" class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 panel-padding hidden">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">结果
+        </h3>
+    </div>
+    <div class="panel-body">
+      <pre id="md5-result"></pre>
+    </div>
+  </div>
+</div>
+
