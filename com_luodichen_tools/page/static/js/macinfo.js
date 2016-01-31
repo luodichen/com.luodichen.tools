@@ -47,3 +47,28 @@ function on_query_button_clicked() {
 		}
 	});
 }
+
+$("#macaddr-field").keydown(function(event) {
+    if (event.keyCode == 13) {
+        on_query_button_clicked();
+    }
+    
+    if ($("#macinfo-alert").attr('class').indexOf('hidden') < 0) {
+        $("#macinfo-alert").addClass('hidden');
+    }
+});
+
+var macaddr_field_onfocus = false;
+$("#macaddr-field").focus(function() {
+	macaddr_field_onfocus = true;
+    $(this).select();
+});
+
+$("#macaddr-field").mouseup(function() {
+    if (macaddr_field_onfocus) {
+    	macaddr_field_onfocus = false;
+        return false;
+    } else {
+        return true;
+    }
+});
