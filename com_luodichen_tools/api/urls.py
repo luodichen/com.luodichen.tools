@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^ip/$', 'api.views.ip'),
     url(r'^ip-api/$', 'api.views.ip_api'),
     url(r'^whois/$', 'api.views.whois'),
+    url(r'^macinfo/$', 'api.views.query_macinfo'),
 ]
