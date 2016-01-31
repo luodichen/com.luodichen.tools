@@ -23,7 +23,7 @@ function query_whois(domain, success, error) {
         dataType: 'json',
         success: success,
         error: error
-    })
+    });
 }
 
 function on_query_button_clicked() {

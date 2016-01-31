@@ -57,6 +57,20 @@ class IPResponse(BaseResponse):
     
     def get_active_index(self):
         return 0
+    
+class MACInfoResponse(BaseResponse):
+    def __init__(self, req):
+        BaseResponse.__init__(self, req)
+        
+    def get_content(self):
+        template = loader.get_template('macinfo.html')
+        context = Context({
+        })
+        
+        return template.render(context)
+    
+    def get_active_index(self):
+        return 1
 
 class WhoisResponse(BaseResponse):
     def __init__(self, req):
@@ -70,7 +84,7 @@ class WhoisResponse(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 1
+        return 2
     
 class MD5(BaseResponse):
     def __init__(self, req):
@@ -84,5 +98,5 @@ class MD5(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 2
+        return 3
     
