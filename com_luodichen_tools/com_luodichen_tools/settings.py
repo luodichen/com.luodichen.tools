@@ -23,7 +23,7 @@ TEMPLATE_PATH = BASE_DIR + "/" + "template"
 SECRET_KEY = 'v=r)l@-yp&)o^8gu#x0w7qmwut^u_p0t+zdby#rbm3_rg1$1s='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -102,3 +102,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+ALLOWED_HOSTS = ['*']
