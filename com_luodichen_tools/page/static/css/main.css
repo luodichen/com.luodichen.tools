@@ -21,12 +21,12 @@ th {
 	padding-top:16px;
 }
 
-.ipinfo-table {
-	width:100%;
+.ipinfo-table th {
+	width: 100px;
 }
 
-.ipinfo-header {
-	width:25%;
+.ipinfo-table td {
+	word-break:hyphenate;
 }
 
 .input-group-padding {
@@ -34,8 +34,12 @@ th {
 	padding-right: 10px;
 }
 
-.macinfo-header {
-	width: 20%;
+.macinfo-table th {
+	width: 100px;
+}
+
+.macinfo-table td {
+	word-break:hyphenate;
 }
 
 .hash-table td {
