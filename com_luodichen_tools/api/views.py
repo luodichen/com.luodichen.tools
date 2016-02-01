@@ -1,4 +1,5 @@
 import urllib2
+import re
 import json
 import socket
 import httpresponse
@@ -72,6 +73,10 @@ def query_macinfo(request):
     ret = {'err': 0, 'msg': '', 'data': None}
     try:
         macaddr = request.REQUEST.get('macaddr')
+        pattern = re.compile('^(?:(?:\d|[a-f]|[A-F]){2}(?::|-)){5}(?:\d|[a-f]|[A-F]){2}$')
+        if not pattern.match(macaddr):
+            raise Exception('invalid mac address')
+            
         mac_info = macinfo.get_macinfo(macaddr)
         
         if mac_info is None:
