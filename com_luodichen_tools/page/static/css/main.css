@@ -4,6 +4,10 @@ body {
   padding-top: 50px;
 }
 
+th {
+	background-color: #bdc3c7;
+}
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;
@@ -32,4 +36,12 @@ body {
 
 .macinfo-header {
 	width: 20%;
+}
+
+.hash-table td {
+	word-break:break-all;
+}
+
+.hash-table th {
+	width: 80px;
 }
