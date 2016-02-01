@@ -1,9 +1,20 @@
 
 function crypto() {
 	var plain = $("#string-field").val();
-	$("#hash-md5").html(CryptoJS.MD5(plain).toString());
-	$("#hash-sha1").html(CryptoJS.SHA1(plain).toString());
-	$("#hash-sha256").html(CryptoJS.SHA256(plain).toString());
+	var show_capital = $("#show-capital").is(':checked');
+	
+	var result = {
+		'hash-md5': CryptoJS.MD5(plain).toString(),
+		'hash-sha1': CryptoJS.SHA1(plain).toString(),
+		'hash-sha256': CryptoJS.SHA256(plain).toString()
+	};
+	
+	for (var key in result) {
+		if (show_capital) 
+			result[key] = result[key].toUpperCase();
+			
+		$("#" + key).html(result[key]);
+	}
 }
 
 $("#string-field").bind('input propertychange', function() {
@@ -27,4 +38,8 @@ $("#string-field").mouseup(function() {
 
 $(document).ready(function() {
     crypto();
+});
+
+$("#show-capital").change(function() {
+	crypto();
 });
