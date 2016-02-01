@@ -49,3 +49,7 @@ th {
 .hash-table th {
 	width: 80px;
 }
+
+.hash-field {
+	resize: none;
+}
