@@ -100,3 +100,16 @@ class HashResponse(BaseResponse):
     def get_active_index(self):
         return 3
     
+class Base64Response(BaseResponse):
+    def __init__(self, req):
+        BaseResponse.__init__(self, req)
+    
+    def get_content(self):
+        template = loader.get_template('base64.html')
+        context = Context({
+        })
+        
+        return template.render(context)
+    
+    def get_active_index(self):
+        return 4

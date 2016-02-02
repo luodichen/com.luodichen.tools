@@ -23,3 +23,6 @@ def md5(request):
 
 def macinfo(request):
     return response.MACInfoResponse(request).get_response()
+
+def base64(request):
+    return response.Base64Response(request).get_response()

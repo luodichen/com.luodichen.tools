@@ -53,3 +53,7 @@ th {
 .hash-field {
 	resize: none;
 }
+
+.base64-field {
+	resize: none;
+}

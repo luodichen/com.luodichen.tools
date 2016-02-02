@@ -20,4 +20,6 @@ tablist = [
                                           'js/crypto-js/rollups/sha1.js',
                                           'js/crypto-js/rollups/sha256.js',
                                           'js/hash.js', ]),
+    TabPage(False, '/page/base64/', 'Base64', ['js/base64.min.js', 
+                                               'js/base64.js', ]),
 ]
