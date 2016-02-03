@@ -6,11 +6,12 @@ Created on Nov 4, 2015
 '''
 
 class TabPage(object):
-    def __init__(self, active=False, href=None, title=None, js_files=[]):
+    def __init__(self, active=False, href=None, title=None, js_files=[], css_links=[]):
         self.active = active
         self.href = href
         self.title = title
         self.js_files = js_files
+        self.css_links = css_links
         
 tablist = [
     TabPage(False, '/page/ip/', u'IP 地址', ['js/ip.js', ]),
@@ -22,4 +23,8 @@ tablist = [
                                           'js/hash.js', ]),
     TabPage(False, '/page/base64/', 'Base64', ['js/base64.min.js', 
                                                'js/base64.js', ]),
+    TabPage(False, '/page/json/', 'JSON', ['js/json2.js', 
+                                           'js/jsonlint.js', 
+                                           'js/json-check.js', ],
+            ['//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css', ]),
 ]

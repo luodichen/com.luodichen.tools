@@ -29,7 +29,8 @@ class BaseResponse(object):
         context = Context({
             'tab_list': tab_list,
             'tab_content': content,
-            'js_files': tab_list[self.get_active_index()].js_files
+            'js_files': tab_list[self.get_active_index()].js_files,
+            'css_links': tab_list[self.get_active_index()].css_links,
         })
         
         return HttpResponse(template.render(context))
@@ -113,3 +114,17 @@ class Base64Response(BaseResponse):
     
     def get_active_index(self):
         return 4
+
+class JsonCheckResponse(BaseResponse):
+    def __init__(self, req):
+        BaseResponse.__init__(self, req)
+    
+    def get_content(self):
+        template = loader.get_template('json-check.html')
+        context = Context({
+        })
+        
+        return template.render(context)
+    
+    def get_active_index(self):
+        return 5

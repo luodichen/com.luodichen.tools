@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^hash/$', 'page.views.md5'),
     url(r'^macinfo/$', 'page.views.macinfo'),
     url(r'^base64/$', 'page.views.base64'),
+    url(r'^json/$', 'page.views.jsoncheck'),
 ]

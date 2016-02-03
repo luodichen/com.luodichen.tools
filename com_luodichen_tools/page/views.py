@@ -26,3 +26,6 @@ def macinfo(request):
 
 def base64(request):
     return response.Base64Response(request).get_response()
+
+def jsoncheck(request):
+    return response.JsonCheckResponse(request).get_response()

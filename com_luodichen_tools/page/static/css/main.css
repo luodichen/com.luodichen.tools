@@ -57,3 +57,7 @@ th {
 .base64-field {
 	resize: none;
 }
+
+.json-field {
+	resize: none;
+}
