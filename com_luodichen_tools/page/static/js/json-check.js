@@ -17,7 +17,7 @@ function set_label(label, style) {
 function check() {
 	var json_str = $("#json-field").val();
 	
-	if (json_str === '') {
+	if ($.trim(json_str) === '') {
 		$("#check-result").html(' ');
 		$("#check-result").attr('class', '');
 		$("#check-result").html(' ');
