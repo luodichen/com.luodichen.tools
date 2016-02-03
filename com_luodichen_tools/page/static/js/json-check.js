@@ -47,4 +47,4 @@ $("#json-field").mouseup(function() {
 
 $(document).ready(function() {
 	check();
-}
+});
