@@ -44,3 +44,7 @@ $("#json-field").mouseup(function() {
         return true;
     }
 });
+
+$(document).ready(function() {
+	check();
+}
