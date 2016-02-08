@@ -75,15 +75,17 @@ def make_records_container(obj):
         return [make_records_container(item) for item in obj]
     elif isinstance(obj, libnsresolve.Record):
         return {key: make_records_container(obj.__dict__[key]) for key in obj.__dict__}
+    elif type(obj) is libnsresolve.IPv4Address:
+        return str(obj)
     else:
         return obj
 
 def dns_resolve(request):
     ret = {'err': 0, 'msg': ''}
     try:
-        domain = request.REQUEST.get('domain')
-        record_type = request.REQUEST.get('type')
-        server = request.REQUEST.get('server')
+        domain = str(request.REQUEST['domain'])
+        record_type = int(request.REQUEST['type'])
+        server = str(request.REQUEST['server'])
         
         records = libnsresolve.resolve(domain, record_type, server, 10)
         ret['data'] = make_records_container(records)
