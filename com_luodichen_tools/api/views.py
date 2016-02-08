@@ -2,6 +2,7 @@ import urllib2
 import json
 import socket
 import httpresponse
+import libnsresolve
 from pywhois.pywhois import PyWhois
 
 def get_client_ip(request):
@@ -65,4 +66,28 @@ def whois(request):
         ret['err'] = -1
         ret['msg'] = str(e)
 
+    return httpresponse.JsonResponse(ret)
+
+def make_records_container(obj):
+    if type(obj) is list:
+        return [make_records_container(item) for item in obj]
+    elif isinstance(obj, libnsresolve.Record):
+        return {key: make_records_container(obj.__dict__[key]) for key in obj.__dict__}
+    else:
+        return obj
+
+def dns_resolve(request):
+    ret = {'err': 0, 'msg': ''}
+    try:
+        domain = request.REQUEST.get('domain')
+        record_type = request.REQUEST.get('type')
+        server = request.REQUEST.get('server')
+        
+        records = libnsresolve.resolve(domain, record_type, server, 10)
+        ret['data'] = make_records_container(records)
+    except libnsresolve.NSRException, e:
+        ret['err'] = e.error_code
+    except Exception, e:
+        ret['err'] = -1
+        
     return httpresponse.JsonResponse(ret)
