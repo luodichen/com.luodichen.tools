@@ -1,9 +1,11 @@
 import urllib2
+import re
 import json
 import socket
 import httpresponse
 import libnsresolve
 from pywhois.pywhois import PyWhois
+from macinfo import macinfo
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -89,5 +91,32 @@ def dns_resolve(request):
         ret['err'] = e.error_code
     except Exception, e:
         ret['err'] = -1
+    
+    return httpresponse.JsonResponse(ret)
         
+def query_macinfo(request):
+    ret = {'err': 0, 'msg': '', 'data': None}
+    try:
+        macaddr = request.REQUEST.get('macaddr')
+        pattern = re.compile('^(?:(?:\d|[a-f]|[A-F]){2}(?::|-)){5}(?:\d|[a-f]|[A-F]){2}$')
+        if not pattern.match(macaddr):
+            raise Exception('invalid mac address')
+            
+        mac_info = macinfo.get_macinfo(macaddr)
+        
+        if mac_info is None:
+            ret['err'] = 2
+            ret['msg'] = 'mac address not found'
+        else:
+            ret['data'] = {
+                'mac_address': macaddr,
+                'registry': mac_info[1],
+                'assignment': mac_info[2],
+                'organization_name': mac_info[3],
+                'organization_address': mac_info[4]
+            }
+    except Exception, e:
+        ret['err'] = -1
+        ret['msg'] = str(e)
+    
     return httpresponse.JsonResponse(ret)

@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^$', 'page.views.index'),
     url(r'^ip/$', 'page.views.ip'),
     url(r'^whois/$', 'page.views.whois'),
-    
-    url(r'^md5/$', 'page.views.md5'),
+    url(r'^hash/$', 'page.views.md5'),
+    url(r'^macinfo/$', 'page.views.macinfo'),
+    url(r'^base64/$', 'page.views.base64'),
+    url(r'^json/$', 'page.views.jsoncheck'),
 ]

@@ -29,7 +29,8 @@ class BaseResponse(object):
         context = Context({
             'tab_list': tab_list,
             'tab_content': content,
-            'js_files': tab_list[self.get_active_index()].js_files
+            'js_files': tab_list[self.get_active_index()].js_files,
+            'css_links': tab_list[self.get_active_index()].css_links,
         })
         
         return HttpResponse(template.render(context))
@@ -57,6 +58,20 @@ class IPResponse(BaseResponse):
     
     def get_active_index(self):
         return 0
+    
+class MACInfoResponse(BaseResponse):
+    def __init__(self, req):
+        BaseResponse.__init__(self, req)
+        
+    def get_content(self):
+        template = loader.get_template('macinfo.html')
+        context = Context({
+        })
+        
+        return template.render(context)
+    
+    def get_active_index(self):
+        return 1
 
 class WhoisResponse(BaseResponse):
     def __init__(self, req):
@@ -70,19 +85,46 @@ class WhoisResponse(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 1
+        return 2
     
-class MD5(BaseResponse):
+class HashResponse(BaseResponse):
     def __init__(self, req):
         BaseResponse.__init__(self, req)
     
     def get_content(self):
-        template = loader.get_template('md5.html')
+        template = loader.get_template('hash.html')
         context = Context({
         })
         
         return template.render(context)
     
     def get_active_index(self):
-        return 2
+        return 3
     
+class Base64Response(BaseResponse):
+    def __init__(self, req):
+        BaseResponse.__init__(self, req)
+    
+    def get_content(self):
+        template = loader.get_template('base64.html')
+        context = Context({
+        })
+        
+        return template.render(context)
+    
+    def get_active_index(self):
+        return 4
+
+class JsonCheckResponse(BaseResponse):
+    def __init__(self, req):
+        BaseResponse.__init__(self, req)
+    
+    def get_content(self):
+        template = loader.get_template('json-check.html')
+        context = Context({
+        })
+        
+        return template.render(context)
+    
+    def get_active_index(self):
+        return 5

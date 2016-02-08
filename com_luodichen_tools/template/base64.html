@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<div class="row">
+  <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+    <div class="form-group input-group-padding">
+      <textarea id="base64-plain" class="base64-field form-control" rows="10" placeholder="在这里粘贴或输入明文"></textarea>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+    <p class="text-center">
+      <span style="color: #7ac943; font-family: 微软雅黑, 黑体;">编码 Base64 </span>
+      <img src="{% static 'img/base64-encode-decode.png' %}" style="height: 16px;"/>
+      <span style="color: #ed1c24; font-family: 微软雅黑, 黑体;"> Base64 解码</span>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+    <div class="form-group input-group-padding">
+      <textarea id="base64-encrypted" class="base64-field form-control" rows="10" placeholder="在这里粘贴或输入 Base64 编码过的文本"></textarea>
+    </div>
+  </div>
+</div>

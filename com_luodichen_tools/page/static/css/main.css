@@ -4,6 +4,10 @@ body {
   padding-top: 50px;
 }
 
+th {
+	background-color: #bdc3c7;
+}
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;
@@ -17,15 +21,43 @@ body {
 	padding-top:16px;
 }
 
-.ipinfo-table {
-	width:100%;
+.ipinfo-table th {
+	width: 100px;
 }
 
-.ipinfo-header {
-	width:25%;
+.ipinfo-table td {
+	word-break:hyphenate;
 }
 
 .input-group-padding {
 	padding-left: 10px;
 	padding-right: 10px;
+}
+
+.macinfo-table th {
+	width: 100px;
+}
+
+.macinfo-table td {
+	word-break:hyphenate;
+}
+
+.hash-table td {
+	word-break:break-all;
+}
+
+.hash-table th {
+	width: 80px;
+}
+
+.hash-field {
+	resize: none;
+}
+
+.base64-field {
+	resize: none;
+}
+
+.json-field {
+	resize: none;
 }

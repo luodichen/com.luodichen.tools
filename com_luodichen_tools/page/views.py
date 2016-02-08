@@ -19,5 +19,13 @@ def whois(request):
 
 def md5(request):
     #return HttpResponse('hello world')
-    return response.MD5(request).get_response()
+    return response.HashResponse(request).get_response()
 
+def macinfo(request):
+    return response.MACInfoResponse(request).get_response()
+
+def base64(request):
+    return response.Base64Response(request).get_response()
+
+def jsoncheck(request):
+    return response.JsonCheckResponse(request).get_response()

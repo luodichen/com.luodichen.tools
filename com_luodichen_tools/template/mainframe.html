@@ -8,6 +8,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+    {% for css_link in css_links %}
+    <link rel="stylesheet" type="text/css" href="{{ css_link }}" />
+    {% endfor %}
 
     <title>luodichen's tools</title>
 
@@ -30,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/page/">Tools</a>
+          <a class="navbar-brand" href="/page/">Tools<sup> t.luodc.cn</sup></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
