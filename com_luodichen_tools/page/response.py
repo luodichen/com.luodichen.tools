@@ -72,6 +72,20 @@ class MACInfoResponse(BaseResponse):
     
     def get_active_index(self):
         return 1
+    
+class DNSResolveResponse(BaseResponse):
+    def __init__(self, req):
+        BaseResponse.__init__(self, req)
+        
+    def get_content(self):
+        template = loader.get_template('dns-resolve.html')
+        context = Context({
+        })
+        
+        return template.render(context)
+    
+    def get_active_index(self):
+        return 2
 
 class WhoisResponse(BaseResponse):
     def __init__(self, req):
@@ -85,7 +99,7 @@ class WhoisResponse(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 2
+        return 3
     
 class HashResponse(BaseResponse):
     def __init__(self, req):
@@ -99,7 +113,7 @@ class HashResponse(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 3
+        return 4
     
 class Base64Response(BaseResponse):
     def __init__(self, req):
@@ -113,7 +127,7 @@ class Base64Response(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 4
+        return 5
 
 class JsonCheckResponse(BaseResponse):
     def __init__(self, req):
@@ -127,4 +141,4 @@ class JsonCheckResponse(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 5
+        return 6

@@ -29,3 +29,7 @@ def base64(request):
 
 def jsoncheck(request):
     return response.JsonCheckResponse(request).get_response()
+
+def dns_resolve(request):
+    return response.DNSResolveResponse(request).get_response()
+

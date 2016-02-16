@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^macinfo/$', 'page.views.macinfo'),
     url(r'^base64/$', 'page.views.base64'),
     url(r'^json/$', 'page.views.jsoncheck'),
+    url(r'^dns-resolve/$', 'page.views.dns_resolve'),
 ]
