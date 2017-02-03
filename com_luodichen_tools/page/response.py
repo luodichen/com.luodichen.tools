@@ -99,7 +99,7 @@ class WhoisResponse(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 3
+        return 2
     
 class HashResponse(BaseResponse):
     def __init__(self, req):
@@ -113,7 +113,7 @@ class HashResponse(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 4
+        return 3
     
 class Base64Response(BaseResponse):
     def __init__(self, req):
@@ -127,7 +127,7 @@ class Base64Response(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 5
+        return 4
 
 class JsonCheckResponse(BaseResponse):
     def __init__(self, req):
@@ -141,4 +141,4 @@ class JsonCheckResponse(BaseResponse):
         return template.render(context)
     
     def get_active_index(self):
-        return 6
+        return 5
