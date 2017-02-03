@@ -83,6 +83,7 @@ function set_ipapi_result(success, data) {
 }
 
 function format_bd_location(response) {
+	/*
     loc = '';
     if (response.country != null && response.country != 'None')
         loc += response.country;
@@ -94,6 +95,9 @@ function format_bd_location(response) {
         loc += (response.district + '区');
     
     return loc;
+    */
+	
+	return response.country + response.region + response.city;
 }
 
 $(document).ready(function() {
@@ -105,7 +109,7 @@ $(document).ready(function() {
             } else {
                 loc = format_bd_location(data.data);
                 set_my_location(true, data.msg, loc);
-                set_bd_result(true, data.msg, loc, data.data.carrier, data.data.ip);
+                set_bd_result(true, data.msg, loc, data.data.isp, data.data.ip);
             }
         }, 
         function() {
@@ -135,7 +139,7 @@ function on_query_button_clicked() {
         function(data) {
             if (data.err == 0) {
                 loc = format_bd_location(data.data);
-                set_bd_result(true, data.msg, loc, data.data.carrier, data.data.ip);
+                set_bd_result(true, data.msg, loc, data.data.isp, data.data.ip);
             } else {
                 set_bd_result(false, null, null, null, null);
             }
